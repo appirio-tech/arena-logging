@@ -3,7 +3,11 @@
     <property name="root.dir" location="${basedir}/../.." />
     <property name="glue.dir" location="${root.dir}/glue" />
 
-    <property name="compile.source" value="1.4" />
+    <property environment="env" />
+
+    <condition property="compile.source" value="${env.BUILD_COMPILE_SOURCE}" else="1.4">
+        <isset property="env.BUILD_COMPILE_SOURCE"/>
+    </condition>
     <import file="${glue.dir}/glue-jar.xml" />
 	
 </project>
